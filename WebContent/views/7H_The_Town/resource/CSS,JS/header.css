@@ -1,0 +1,114 @@
+body{
+    background: rgb(240, 240, 240);
+    margin: 0px;
+    font-family: 'S-CoreDream-3Light';
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    
+}
+.naviBack{
+    position: absolute;
+    width: 100%;
+    height: 100px;
+    background: white;
+    transition: all 0.3s ease-in-out;
+    z-index:1;
+}
+.naviBar{
+    position: absolute;
+    width: auto;
+    height: 100px;
+    background: white;
+    z-index:5;
+}
+[class*=headerUl] a{
+    color: black;
+    font-weight: lighter;
+}
+.header{
+    width: 1300px;
+    height: 100px;
+    background: white;
+    display: flex;
+    transition: all 0.3s ease-in-out;
+}
+[class*=headerUl]{
+    font-weight: bold;
+    list-style-type: none;
+    width: 150px;
+    margin: 40px 40px 0px 0px;
+    overflow: hidden;
+}
+[class*=headerUl] a{
+    font-weight: bolder;
+}
+[class*=headerLi] a{
+    font-weight: lighter;
+}
+.headerUl1>.headerLi{
+    text-align: center;
+    padding: 6px;
+    margin-left: -60px;
+}
+.headerUl2>.headerLi{
+    text-align: center;
+    padding: 6px;
+    margin-left: -80px;
+}
+.headerUl3>.headerLi{
+    text-align: center;
+    padding: 6px;
+    margin-left: -60px;
+}
+.headerUl4>.headerLi{
+    text-align: center;
+    padding: 6px;
+    margin-left: -50px;
+}
+.topMargin{
+    margin-top: 20px;
+}
+.myPage{
+    position: absolute;
+    margin-top: 80px;
+    margin-left: 1180px;
+    background-color: white;
+    border-radius: 15px;
+    transition: all 0.3s ease-in-out;
+    height: 0px;
+    overflow: hidden;
+}
+.myPage>.myPageUl{
+    margin: 10px;
+}
+.myPageLi a{
+    color: black;
+}
+.notArea a{
+    color: black;
+}
+.myPageLi{
+    text-align: center;
+    padding: 5px;
+}
+.menuIcon:hover{
+    cursor: pointer;
+}
+
+
+.ani-slide {
+    animation: fadeInUp 1.5s;
+}
+
+@keyframes fadeInUp {
+    0% {
+        opacity: 0;
+        transform: translate3d(0, 10%, 0);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateZ(0);
+    }
+}

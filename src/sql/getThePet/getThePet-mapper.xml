@@ -1,0 +1,191 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+
+	<entry key="selectListCount">
+		SELECT COUNT(*)
+		FROM GETTHEPET
+		WHERE STATUS = 'Y'
+	</entry>
+	
+	<entry key="selectListCountFavorite">
+		SELECT COUNT(*)
+		FROM FAVORITE
+		WHERE USER_NO = ?
+	</entry>
+	
+	<entry key="selectSearchListCount">
+		SELECT COUNT(*)
+		FROM GETTHEPET G
+		JOIN PET P USING(PET_NO)
+		WHERE G.STATUS = 'Y' AND (P.PET_NAME = ? OR P.PET_KIND = ? OR P.PET_GENDER = ?)
+	</entry>
+	
+	<entry key="selectGetThePetList">
+		SELECT *
+		FROM (
+			SELECT ROWNUM RNUM, B.*
+			FROM(
+				SELECT GET_NO, GET_CONTENT, PET_NAME, PET_KIND, PET_AGE, PET_GENDER, PET_PRICE, PET_RESCUE, FILE_PATH || CHANGE_NAME "THUMBNAIL"
+				FROM GETTHEPET G
+				LEFT JOIN PET P USING(PET_NO)
+				LEFT JOIN (
+                    SELECT *
+                    FROM ATTACHMENT AT
+                    JOIN FILECATEGORY USING(CATEGORY_NO)
+                    WHERE CATEGORY_NAME = 'getThumb' AND AT.STATUS='Y'
+                    ) A ON (A.BOARD_NO = G.GET_NO)
+				WHERE G.STATUS = 'Y'
+				ORDER BY G.CREATE_DATE DESC) B
+			)
+		WHERE RNUM BETWEEN ? AND ?
+	</entry>
+	
+	<entry key="searchGetThePetList">
+		SELECT *
+		FROM (
+			SELECT ROWNUM RNUM, B.*
+			FROM(
+				SELECT GET_NO, GET_CONTENT, PET_NAME, PET_KIND, PET_AGE, PET_GENDER, PET_PRICE, PET_RESCUE, FILE_PATH || CHANGE_NAME "THUMBNAIL"
+				FROM GETTHEPET G
+				LEFT JOIN PET P USING(PET_NO)
+				LEFT JOIN (
+                    SELECT *
+                    FROM ATTACHMENT AT
+                    JOIN FILECATEGORY USING(CATEGORY_NO)
+                    WHERE CATEGORY_NAME = 'getThumb' AND AT.STATUS='Y' 
+                    ) A ON (A.BOARD_NO = G.GET_NO)
+				WHERE G.STATUS = 'Y' AND (PET_NAME = ? OR PET_KIND = ? OR PET_GENDER = ?)
+				ORDER BY G.CREATE_DATE DESC) B
+			)
+		WHERE RNUM BETWEEN ? AND ?
+	</entry>
+	<entry key="searchPetList">
+		SELECT *
+		FROM GETTHEPET
+		JOIN PET USING(PET_NO)
+		WHERE PET_NAME = ? OR PET_KIND = ? OR PET_GENDER = ?
+	</entry>
+	
+	<entry key="selectGetThePet">
+		SELECT 
+			GET_NO, 
+			GET_CONTENT,
+			PET_NO,
+			FILE_PATH || CHANGE_NAME "THUMBNAIL"
+		FROM GETTHEPET G
+		LEFT JOIN ATTACHMENT A ON (A.BOARD_NO = G.GET_NO)
+		WHERE G.GET_NO = ? AND G.STATUS = 'Y'
+	</entry>
+	
+	<entry key="selectGetThePetInfo">
+		SELECT *
+		FROM GETTHEPET G
+		JOIN PET P USING(PET_NO)
+		WHERE G.GET_NO = ? AND G.STATUS = 'Y'
+	</entry>
+	
+	<entry key="selectAttachment">
+		SELECT
+			FILE_NO,
+			ORIGIN_NAME,
+			CHANGE_NAME,
+			FILE_PATH
+		FROM ATTACHMENT
+		WHERE BOARD_NO = ? AND STATUS = 'Y'
+	</entry>
+	
+	
+	<entry key="selectFileCategoryList">
+		SELECT 
+			CATEGORY_NO,
+			CATEGORY_NAME
+		FROM FILECATEGORY	
+	</entry>
+	
+	<entry key="insertGetThePet">
+		INSERT INTO GETTHEPET(GET_NO, GET_CONTENT, PET_NO, STATUS)
+		VALUES('GE' || SEQ_GET_NO.NEXTVAL, ?, ?, 'Y') 
+	</entry>
+	
+	
+	<entry key="insertAttachment">
+		INSERT INTO ATTACHMENT(FILE_NO, ORIGIN_NAME, CHANGE_NAME, FILE_PATH, CATEGORY_NO, BOARD_NO, STATUS)
+		VALUES('AT' || SEQ_FILE_NO.NEXTVAL, ?, ?, ?, ?, 'GE' || SEQ_GET_NO.CURRVAL , 'Y')
+	</entry>
+	
+	<entry key="updateAttachment">
+		INSERT INTO ATTACHMENT(FILE_NO, ORIGIN_NAME, CHANGE_NAME, FILE_PATH, CATEGORY_NO, BOARD_NO, STATUS)
+		VALUES('AT' || SEQ_FILE_NO.NEXTVAL, ?, ?, ?, ?, ?, 'Y')
+	</entry>
+	
+	<entry key="updateGetThePet">
+		UPDATE GETTHEPET
+		SET GET_CONTENT = ? , PET_NO = ?
+		WHERE GET_NO = ?
+	</entry>	
+	
+	<entry key="deleteGetThePet">
+		UPDATE GETTHEPET
+		SET STATUS = 'N'
+		WHERE GET_NO = ?
+	</entry>
+	
+	<entry key="deleteAttachment">
+		UPDATE ATTACHMENT
+		SET STATUS = 'N'
+		WHERE FILE_NO = ?
+	</entry>
+	
+	<entry key="checkPetNo">
+		SELECT *
+		FROM PET
+		WHERE PET_NO = ?
+	</entry>
+	
+	<entry key="getPetInfo">
+		SELECT *
+		FROM PET
+		WHERE PET_NAME = ?
+	</entry>
+	
+	<entry key="searchGet">
+		SELECT *
+		FROM GETTHEPET
+		JOIN PET USING(PET_NO)
+		WHERE PET_NAME = ? OR PET_KIND = ? OR PET_GENDER = ?
+	</entry>
+	
+	<entry key="insertFavorite">
+		INSERT INTO FAVORITE 
+		VALUES(?,?)
+	</entry>
+	
+	<entry key="deleteFavorite">
+		DELETE FROM FAVORITE 
+		WHERE USER_NO = ? AND GET_NO = ?
+	</entry>
+	
+	<entry key="checkFavorite">
+		SELECT *
+		FROM FAVORITE
+		WHERE USER_NO = ? AND GET_NO = ?
+	</entry>
+	
+	<entry key="selectFavorite">
+		SELECT *
+		FROM (
+			SELECT ROWNUM RNUM, B.*
+			FROM(
+				SELECT P.PET_KIND, P.PET_NAME, P.PET_GENDER, G.GET_NO
+                FROM FAVORITE F
+                JOIN MEMBER M ON F.USER_NO = M.USER_NO
+                JOIN GETTHEPET G ON F.GET_NO = G.GET_NO
+                JOIN PET P ON P.PET_NO = G.PET_NO
+                WHERE F.USER_NO = ?
+				ORDER BY G.CREATE_DATE DESC) B
+			)
+		WHERE RNUM BETWEEN ? AND ?
+	</entry>
+	
+</properties>

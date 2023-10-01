@@ -1,0 +1,230 @@
+body {
+    margin: 0;
+    box-sizing: border-box;
+}
+
+.outer {
+    width: 100vw;
+    height: 2000px;
+    background-color: rgb(240, 240, 240);
+    
+}
+
+/* ============================================ */
+/*                  컨텐츠                        */
+/* ============================================ */
+
+.container {
+    width: 80vw;
+    max-width:1300px;
+    min-width:1150px;
+    height:100%;
+    margin: auto;
+    padding-top: 190px;
+    display: flex;
+    position:relative;
+}
+
+.box {
+    border: 1px solid rgba(180, 180, 180, 0.5);
+    box-shadow: 0 10px 10px 0 rgba(128, 128, 128, 0.523);
+}
+
+/* ============================================ */
+/*                  사이드바                        */
+/* ============================================ */
+
+.sidebar {
+    width: 200px;
+    height: 600px;
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    left:10%;
+}
+
+#sidebar {
+    position: absolute;
+}
+
+.side-navi a {
+    text-decoration: none;
+    color: rgb(77, 77, 77);
+}
+
+.user-name {
+    width: 80%;
+    padding: 30px 15px 0;
+    line-height: 35px;
+    font-weight: bold;
+}
+
+.user-name>.user-txt1 {
+    font-size: 16px;
+    color: gray;
+}
+
+.user-name>.user-txt2 {
+    font-size: 25px;
+}
+.side-navi {
+    width: 80%;
+    padding-top: 20px;
+    text-align: center;
+    line-height: 35px;
+    font-size: 15px;
+    font-weight: 400;
+    margin: 0;
+}
+
+.side-navi dt {
+    padding: 10px 0;
+    border-bottom: 1.5px solid lightgray;
+}
+
+.side-navi dt:first-child {
+    border-top: 1.5px solid lightgray;
+}
+
+.side-navi dt:hover {
+    color: black;
+    font-weight: bold;
+    background: linear-gradient(to right, #ffffff, #ffffff 50%, #f4f4f4ef 50%);
+    background-size: 200% 100%;
+    animation: gradient-animation 0.2s ease-out forwards;
+}
+
+@keyframes gradient-animation {
+    0% {
+        background-position: 0 0;
+    }
+    100% {
+        background-position: 100% 0;
+    }
+}
+
+/* ============================================ */
+/*                  관리자 컨텐츠1                       */
+/* ============================================ */
+
+.adminpage-content {
+    width: 40VW;
+    height: 100%;
+    /* margin-right: 115px; */
+    position:absolute;
+    right:10%;
+}
+
+
+.adminpage-title {
+    font-size: 30px;
+    width: 100%;
+    height: 70px;
+    font-weight: bold;
+}
+
+.admin-info1 {
+    background-color: white;
+    height: 160px;
+    display: flex;
+    flex-direction: column;
+    align-items:first baseline;
+    justify-content: center;
+    padding: 5%;
+}
+
+.info1-wrap {
+    display: flex;
+    align-items: center;
+}
+
+.info1-txt {
+    line-height: 38px;
+    height: 100%;
+    padding-left: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items:first baseline;
+    justify-content: center;
+}
+
+.info1-txt1 {
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.info1-txt2 {
+    font-size: 14px;
+    color: gray;
+}
+
+/* ============================================ */
+/*                  관리자 컨텐츠2                        */
+/* ============================================ */
+
+.admin-info2 {
+    margin-top: 60px;
+    background-color: rgb(255, 255, 255);
+    display: flex;
+    flex-direction: column;
+    align-self: center;
+}
+
+.info2-wrap {
+    width: 90%;
+    margin: auto;
+    margin-top:60px;
+    padding-bottom: 100px;
+    position: relative;
+}
+
+.info2-title {
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.info2-inquiry {
+    margin-top: 50px;
+}
+.info2-inquiry>table {
+    width: 100%;
+}
+.info2-inquiry table * {
+    text-align: center;
+}
+
+.info2-inquiry thead>tr {
+    text-align: center;
+    border-bottom: 1px solid gray;
+}
+
+.info2-inquiry td {
+    font-size: 14px;
+    margin-left: 20px;
+    color: gray;
+    line-height: 40px;
+}
+
+.info2-inquiry td {
+    border-bottom: 1px solid #444444;
+    padding: 10px;
+}
+
+.info2-inquiry span {
+    margin-top: 15px;
+    /* border: 1px solid black; */
+
+}
+
+.btn-wrap {
+    position: absolute;
+    bottom: 5%;
+    right : 0;
+}
+
+.info2-wrap .btn {
+    background-color: rgb(153, 152, 152);
+}
+
+

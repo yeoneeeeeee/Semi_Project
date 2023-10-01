@@ -1,0 +1,97 @@
+.paymentBox{
+    background: white;
+    width: 880px;
+    height: auto;
+    margin: 180px;
+}
+.paymentBox>h4{
+    font-family: 'S-CoreDream-3Light';
+    text-align: center;
+    font-weight: bold;
+    margin: 100px 0px 100px 0px;
+}
+.paymentForm{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.paymentLine{
+    margin: 50px;
+    border: 1px solid rgb(190, 190, 190);
+    width: 750px;
+}
+.deliverySelect{
+    display: flex;
+    margin-bottom: 50px;
+}
+.deliverySelect label{
+    margin: 0px 0px 0px 100px;
+}
+.addressSelect{
+    margin: 0px 0px 0px 100px;
+}
+.addressSelect .searchAddressBtn{
+    font-family: 'S-CoreDream-3Light';
+    font-weight: lighter;
+    width: 120px; 
+    height: 40px;
+    border: 1px solid rgba(190, 190, 190, 0.5);
+    border-radius: 10px;
+    background: rgba(190, 190, 190, 0.5);
+    cursor: pointer;
+    position:absolute;
+    margin-top: -78px;
+    margin-left:560px;
+}
+.petInfoCheck{
+    margin: 50px 0px 50px 100px;
+    display: flex;
+}
+.petInfoCheck p{
+    font-weight: bold;
+    font-size: 17px;
+    margin-left: 30px;
+    padding: 15px;
+    width: 300px;
+    border-bottom: 1px solid rgb(160, 160, 160);
+}
+
+.paymentAmount{
+    margin: 0px 0px 0px 100px;
+    display: flex;
+}
+.paymentAmount p{
+    font-size: 20px;
+    font-weight: bold;
+    margin-right: 80px;
+}
+[class*=paymentMethod]{
+    margin: 0px 0px 0px 100px;
+}
+[class*=paymentMethod] p{
+    font-size: 20px;
+    font-weight: bold;
+    margin-right: 80px;
+}
+[class*=paymentMethod] span{
+    color: rgb(80, 80, 80);
+}
+.paymentMethod2{
+    margin-bottom: 70px;
+    display: flex;
+}
+.paymentSubmit{
+    text-align: center;
+}
+.paymentSubmit > input{
+    font-family: 'S-CoreDream-3Light';
+    font-weight: bold;
+    width: 120px; 
+    height: 45px;
+    border: 1px solid rgb(160, 160, 160);
+    border-radius: 5px;
+    background: rgba(190, 190, 190, 0.5);
+    cursor: pointer;
+    margin-top: 40px;
+    margin-bottom: 120px;
+}

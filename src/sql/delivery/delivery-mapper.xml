@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+
+	<entry key="selectDeliveryList">
+		SELECT *
+    	FROM (
+    		SELECT ROWNUM RNUM, A.*
+    		FROM(
+	            SELECT *
+	            FROM DELIVERY D
+	            LEFT JOIN PET P ON(P.PET_NO = D.PET_NO)
+				LEFT JOIN MEMBER M ON(M.USER_NO = D.USER_NO)
+	            WHERE D.DEL_STATUS != 'N' AND D.DEL_STATUS != '배송완료'
+            	ORDER BY D.DELIVERY_DATE DESC) A
+       	  		)
+    	WHERE RNUM BETWEEN ? AND ?
+	</entry>
+	
+	<entry key="selectAdoptDeliveryList"> <!-- pet 과 delivery 일치하는 MEMBER정보 불러오기 --> 
+	  SELECT PET_KIND, PET_NAME, DEL_STATUS
+		FROM DELIVERY D
+		LEFT JOIN PET P ON(P.PET_NO = D.PET_NO)
+		LEFT JOIN MEMBER M ON(M.USER_NO = D.USER_NO)
+		WHERE D.USER_NO = ?
+		ORDER BY D.DELIVERY_DATE DESC
+	</entry>
+	
+	<entry key="selectListCount">
+		SELECT COUNT(*)
+		FROM   DELIVERY
+		WHERE STATUS= 'Y'
+	</entry>
+	<entry key="selectListCountUserNo">
+		SELECT COUNT(*)
+		FROM   DELIVERY
+		WHERE USER_NO = ?
+	</entry>
+	
+	<entry key="selectDelivery">
+		SELECT *
+		FROM   DELIVERY
+		WHERE  DEL_NO = ?
+			AND DEL_STATUS != 'N'
+	</entry>
+
+	<entry key="insertDelivery">
+		INSERT INTO DELIVERY(
+				DEL_NO,
+				CUR_SPOT,
+				PET_NO,
+				USER_NO
+				)
+		VALUES (
+				'DE' || SEQ_DEL_NO.NEXTVAL,
+				?,
+				?,
+				?
+				)
+	</entry>
+
+	<entry key="updateDelivery">
+		UPDATE DELIVERY
+		SET    DEL_STATUS = ?,
+			   CUR_SPOT = ?
+		WHERE  DEL_NO = ?
+	</entry>
+
+	<entry key="DeliveryCompletedUpdate">
+		UPDATE DELIVERY
+		SET    DEL_STATUS =?,
+			   CUR_SPOT = ?
+		WHERE  DEL_NO = ?
+	</entry>
+
+	<entry key="deleteDelivery">
+		UPDATE DELIVERY
+		SET    DEL_STATUS = 'N'
+		WHERE  DEL_NO = ?
+	</entry>
+
+	<entry key="updateCurDelivery">
+		UPDATE DELIVERY
+		SET	   DEL_STATUS = '배송중'
+		WHERE  DEL_NO = ?
+	</entry>
+
+	<entry key="completedDelivery"> <!-- member와 join시켜야함 -->
+		UPDATE DELIVERY
+		SET    DEL_STATUS = '배송완료'
+		WHERE  DEL_NO = ?
+	</entry>
+	
+</properties>

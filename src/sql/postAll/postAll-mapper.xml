@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+   
+
+   
+  <entry key="insertPost">
+     INSERT INTO POSTALL
+     (
+         POST_NO,
+         POST_TITLE,
+         POST_CONTENT,
+         CREATE_DATE,
+         RECEIVER_NO,
+         CALLER_NO,
+         STATUS
+     ) VALUES
+     (
+      'PO' || SEQ_POST_NO.NEXTVAL,
+        ?,
+        ?,
+        SYSDATE,
+        ?,
+        ?,
+        'Y'
+     )  
+  </entry> 
+
+<entry key="deletePost">
+        UPDATE POSTALL
+        SET STATUS = 'N' 
+        WHERE POST_NO = ? 
+</entry>
+
+<entry key="selectPost">
+       SELECT *
+       FROM POSTALL
+       WHERE STATUS = 'Y'
+</entry>
+
+<entry key="RselectPost">
+    SELECT *
+    FROM (
+	    SELECT ROWNUM RNUM ,  A.*
+	    FROM ( 
+		    SELECT 
+		    POST_NO,
+		    POST_TITLE,
+		    POST_CONTENT,
+		    CREATE_DATE,
+		    RECEIVER_NO,
+		    CALLER_NO,
+		    STATUS
+		    FROM POSTALL 
+		    WHERE RECEIVER_NO = ? AND STATUS = 'Y'
+		    ORDER BY CREATE_DATE DESC) A
+    )
+    WHERE RNUM BETWEEN ? AND ?
+</entry>
+
+
+<!-- AND STATUS = 'Y' -->
+
+  <entry key="selectListCount">
+      SELECT COUNT(*)
+      FROM POSTALL
+      WHERE STATUS='Y' 
+  </entry>
+  
+    <entry key="searchName">
+      SELECT USER_NO
+      FROM MEMBER
+      WHERE USER_NAME = ? 
+  </entry>
+  
+  
+  <entry key="selectList"> 
+    SELECT *
+    FROM (
+	    SELECT ROWNUM RNUM ,  A.*
+	    FROM ( 
+		    SELECT 
+		    POST_NO,
+		    POST_TITLE,
+		    POST_CONTENT,
+		    CREATE_DATE,
+		    RECEIVER_NO,
+		    CALLER_NO,
+		    STATUS
+		    FROM POSTALL 
+		    WHERE STATUS = 'Y'
+		    ORDER BY CREATE_DATE DESC) A
+    )
+    WHERE RNUM BETWEEN ? AND ?
+  </entry>
+
+
+
+
+
+</properties>
+
+

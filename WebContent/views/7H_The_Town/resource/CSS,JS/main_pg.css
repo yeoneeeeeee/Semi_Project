@@ -1,0 +1,243 @@
+
+
+.outer{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width:100%;
+    margin : 0;
+    margin-top: 100px;
+    height: 100%;
+}
+.main_pg_wrap{
+    border: 1px solid black;
+    width: 100%;
+    height: 1200px;
+}
+
+
+/* 섹션 1 */
+.section1{
+    background-repeat: no-repeat;
+    background-size: cover;
+    border:none;
+}
+.section1>h4{
+    margin-left: 300px;
+    margin-top: 450px;
+    color: rgba(255, 255, 255, 0.9);
+    font-weight: bolder;
+    font-size: 65px;
+    text-shadow: 3px 3px 3px rgba(120, 120, 120, 0.95);
+}
+.section1>p{
+    margin-left: 420px;
+    color: rgba(255, 255, 255, 1);
+    font-weight: bolder;
+    font-size: 28px;
+    text-shadow: 2px 2px 3px black;
+}
+
+
+/* 섹션 2 */
+
+.section2{
+    background-repeat: no-repeat;
+    background-size: cover;
+    border:none;
+}
+.section2>div>.petMent{
+	text-align: right;
+    color: rgba(255, 255, 255, 0.9);
+    font-weight: bolder;
+    font-size: 20px;
+    text-shadow: 2px 2px 3px black;
+    margin-top: 480px;
+    margin-right:335px;
+}
+.section2>div>.petCount{
+	text-align: right;
+    color: white;
+    font-weight: bolder;
+    font-size: 85px;
+    text-shadow: 2px 2px 2px black;
+    margin-top:-50px;
+    margin-right:410px;
+}
+.section2>div>.petMent2{
+	text-align: right;
+    color: rgba(255, 255, 255, 0.9);
+    font-weight: bolder;
+    font-size: 36px;
+    text-shadow: 2px 2px 3px black;
+    margin-top:-155px;
+    margin-right:335px;
+}
+
+
+
+
+/* 섹션 3 */
+.main_pg_wrap.section3{
+	background: linear-gradient(to bottom,  rgba(222, 215, 204, 0.4), white);
+    background-repeat: no-repeat;
+    background-size: cover;
+    height:3000px;
+    border:none;
+}
+.section3>h4{
+	margin-top:200px;
+	text-align:center;
+	line-height:7;
+	font-weight:bold;
+}
+.section3_wrap{
+	background:black;
+    width: 100%;
+    height: 855px;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+}
+.section3_wrap3{
+    width: fit-content;
+    height: 300px;
+    margin-left: 22%;
+    margin-top: 200px;
+    display: flex;
+}
+.section3_content1{
+	width: fit-content;
+    height: 650px;
+    display:flex;
+    position:relative;
+}
+.section3_content1>h4{
+	font-weight:bolder;
+	text-shadow: 1px 1px 1px gray;
+	width:380px;
+	margin:200px 0px 0px 180px;
+}
+.section3_content2{
+	width: fit-content;
+    height: 350px;
+    margin-left: 600px;
+    margin-top:650px;
+    display:flex;
+}
+.section3_content2>h4{
+	font-weight:bolder;
+	width:380px;
+	text-shadow: 1px 1px 1px gray;
+	margin:280px 200px 0px -1600px;
+}
+
+
+
+/* 섹션 4 */
+
+.section4{
+	background-image: linear-gradient(to bottom,  rgba(230,230,215,1), rgba(222, 215, 204, 0.4));
+    background-repeat: no-repeat;
+    background-size: cover;
+    border-style: none;
+    height: 1500px;
+}
+.petBoxLine{
+    display: flex;
+}
+.petListBox{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    height: 800px;
+    font-family: 'S-CoreDream-3Light';
+}
+.petListBox>div>h4{
+	color: rgba(30,30,30,0.9);
+	font-weight:bold;
+	margin-top: 160px;
+	margin-bottom:-30px;
+	font-size: 38px;
+}
+.petBoxOne{
+    width: 300px;
+    height: 350px;
+    margin: 80px -30px -30px 60px;
+    cursor: pointer;
+}
+.petBoxOne div{
+    background: none;
+    border: none;
+}
+.petImage{
+	width:fit-content;
+	height:300px;
+	transition: all 0.5s;
+}
+.petImage:hover{
+	transform: scale(1.07);
+}
+.petInformation{
+	margin-top:25px;
+    opacity: 0;
+    transition: all 0.5s ease;
+}
+.petBoxOne:hover>.petInformation{
+    opacity: 1;
+}
+.petInformation p{
+	text-shadow: 1px 1px 1px gray;
+    color: black;
+    background: none;
+    font-size: 19px;
+    font-weight: bolder;
+    margin: 0px;
+}
+.main_pg_wrap.section5{
+    margin: 0px;
+    background-size: cover;
+    height:1200px;
+}
+.textAlignCenter{
+    text-align: cover;
+}
+
+
+/* section 5 */
+.section5{
+	border:none;
+	text-align : center;
+}
+.section5>div{
+	height:100%;
+}
+.section5 h2{
+	color: rgba(210, 210, 210);
+    font-weight: bolder;
+    font-size: 50px;
+    text-shadow: 3px 3px 3px rgba(120, 120, 120, 0.95);
+    margin:50px;
+    margin-top:450px;
+}
+.section5 h4{
+	color: rgba(210, 210, 210);
+    font-weight: bolder;
+    font-size: 28px;
+    text-shadow: 3px 3px 3px rgba(120, 120, 120, 0.95);
+    margin:50px;
+    margin-bottom:200px;
+}
+.section5 a{
+	color: rgba(220, 220, 220, 0.9);
+    font-weight: bolder;
+    font-size: 22px;
+    text-shadow: 1px 1px 1px rgba(120, 120, 120, 0.95);
+    margin-top:100px;
+    background-image: linear-gradient(rgba(0,0,0,0.5),rgba(0,0,0,0.5));
+    padding: 20px 70px;
+    border: 1px solid rgba(60, 60, 60, 0.6); 
+    border-radius: 40px;
+}
+

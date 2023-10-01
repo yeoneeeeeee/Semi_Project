@@ -1,0 +1,193 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+
+
+	<entry key="loginMember">
+		SELECT *
+		FROM MEMBER
+		WHERE USER_ID = ?
+			AND USER_PWD = ?
+			AND STATUS = 'Y'
+	</entry>
+
+	
+	<entry key="insertMember">
+		INSERT INTO MEMBER(
+			USER_NO, USER_ID, USER_PWD, USER_NAME, PHONE, EMAIL, ADDRESS
+		)
+		VALUES(
+			'ME' || SEQ_USER_NO.NEXTVAL, ?, ?, ?, ?, ?, ?
+		)
+	</entry>
+	
+	<entry key="idCheck">
+		SELECT *
+		FROM MEMBER
+		WHERE USER_ID = ?
+	</entry>
+
+	
+	<entry key="updateMember">
+		UPDATE MEMBER 
+		SET USER_NAME = ?,
+			PHONE = ?,
+			EMAIL = ?,
+			ADDRESS = ?
+		WHERE USER_ID = ?
+	</entry>
+
+	<entry key="updatePwdMember">
+		UPDATE MEMBER
+		SET USER_PWD = ?
+		WHERE USER_ID = ?
+	</entry>
+
+	
+	<entry key="selectMember">
+		SELECT *
+		FROM MEMBER
+		WHERE USER_ID = ?
+			AND STATUS = 'Y'
+	</entry>
+
+	<entry key="memberDetail">
+		SELECT *
+		FROM MEMBER
+		WHERE USER_NO = ?
+	</entry>
+	
+	<entry key="deleteMember">
+		UPDATE MEMBER
+		SET STATUS = 'N'
+		WHERE USER_PWD = ?
+			AND USER_ID = ?
+	</entry>
+	
+	<entry key="deleteMemberAd">
+		UPDATE MEMBER
+		SET STATUS = 'N'
+		WHERE USER_NO = ?
+	</entry>
+	
+	<entry key="memberList">
+		SELECT *
+		FROM MEMBER
+		WHERE STATUS = 'Y'
+	</entry>
+	
+	
+	<entry key="memberListPi">
+		SELECT *
+		FROM (
+		    SELECT ROWNUM RNUM, A.*
+		    FROM (
+		        SELECT USER_NO, USER_NAME, USER_ID, USER_PWD, PHONE, EMAIL, ADDRESS, ENROLL_DATE, GRADE_NO, STATUS
+		        FROM MEMBER m
+		        WHERE STATUS = 'Y'
+		        ORDER BY TO_NUMBER(SUBSTR(USER_NO, 3))
+		    ) A
+		)
+		WHERE RNUM BETWEEN ? AND ?
+	</entry>
+	
+	<entry key="selectMemberCount">
+		SELECT COUNT(*)
+		FROM MEMBER
+		WHERE STATUS = 'Y'
+	</entry>
+	
+	<entry key="selectKeywordMember">
+		SELECT COUNT(*)
+		FROM MEMBER
+		WHERE STATUS = 'Y'
+			AND (USER_NO LIKE ? OR EMAIL LIKE ? OR USER_NAME LIKE ? OR USER_ID LIKE ?)
+	</entry>
+	
+	
+	
+	<entry key="selectMemberNo">
+		SELECT *
+		FROM(
+			SELECT ROWNUM RNUM , A.*
+			FROM (
+				SELECT USER_NO, USER_NAME, USER_ID, USER_PWD, PHONE, EMAIL, ADDRESS, ENROLL_DATE, GRADE_NO, STATUS
+				FROM MEMBER m
+				WHERE STATUS = 'Y'
+					AND (USER_NO LIKE ? OR EMAIL LIKE ? OR USER_NAME LIKE ? OR USER_ID LIKE ?)
+				ORDER BY TO_NUMBER(SUBSTR(USER_NO, 3))) A
+				)
+		WHERE RNUM BETWEEN ? AND ?
+			
+	</entry>
+	
+	
+	<entry key="selectEnrollDate">
+		SELECT *
+		FROM(
+			SELECT ROWNUM RNUM , A.*
+			FROM (
+				SELECT USER_NO, USER_NAME, USER_ID, USER_PWD, PHONE, EMAIL, ADDRESS, ENROLL_DATE, GRADE_NO, STATUS
+				FROM MEMBER m
+				WHERE STATUS = 'Y'
+					AND (USER_NO LIKE ? OR EMAIL LIKE ? OR USER_NAME LIKE ? OR USER_ID LIKE ?)
+				ORDER BY ENROLL_DATE DESC) A
+				)
+		WHERE RNUM BETWEEN ? AND ?
+			
+	</entry>
+	
+	
+	<entry key="selectMemberGrade">
+		SELECT *
+		FROM(
+			SELECT ROWNUM RNUM , A.*
+			FROM (
+				SELECT USER_NO, USER_NAME, USER_ID, USER_PWD, PHONE, EMAIL, ADDRESS, ENROLL_DATE, GRADE_NO, STATUS
+				FROM MEMBER m
+				WHERE STATUS = 'Y'
+					AND (USER_NO LIKE ? OR EMAIL LIKE ? OR USER_NAME LIKE ? OR USER_ID LIKE ?)
+				ORDER BY GRADE_NO DESC) A
+				)
+		WHERE RNUM BETWEEN ? AND ?
+			
+	</entry>
+	
+	
+	
+	
+	
+	<entry key="userNo">
+		SELECT USER_NO
+		FROM MEMBER
+		WHERE USER_NAME = ?
+	</entry>
+	
+	
+	
+	
+	
+	
+	
+	<entry key="memberGrade">
+		SELECT *
+		FROM MEMBERGRADE
+		JOIN MEMBER USING (GRADE_NO)
+		WHERE USER_ID = ?
+	</entry>
+	
+	<entry key="memberDonation">
+		SELECT *
+		FROM DONATION
+		JOIN MEMBER USING (USER_NO)
+		WHERE USER_ID = ?
+	</entry>
+	
+	<entry key="memberDonaCount">
+		SELECT COUNT(*)
+		FROM DONATION
+		JOIN MEMBER USING (USER_NO)
+		WHERE USER_ID = ?
+	</entry>
+
+</properties>

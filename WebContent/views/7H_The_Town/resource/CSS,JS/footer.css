@@ -1,0 +1,35 @@
+.footerArea{
+    margin: 0px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background:rgba(70, 50, 50, 0.9);
+    color:rgba(250,250,250,0.6);
+    width: 100%;
+    height: 450px;
+    font-family: 'S-CoreDream-3Light';
+}
+.footerUl{
+    margin-top: 110px;
+    list-style: none;
+    display: flex;
+}
+.footerUl>li{
+    margin: 10px;
+    font-weight: bold;
+}
+.footerP{
+    font-weight: lighter;
+    text-align: center;
+    margin: 0px;
+    padding: 6px;
+}
+
+.footerArea>img{
+	width:200px;
+	height:200px;
+	filter: brightness(0);
+	position:absolute;
+	margin-top:250px;
+	margin-left:1660px;
+}

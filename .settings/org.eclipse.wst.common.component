@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?><project-modules id="moduleCoreId" project-version="1.5.0">
+        
+    <wb-module deploy-name="7H_The_Town_Project">
+                
+        <wb-resource deploy-path="/" source-path="/WebContent" tag="defaultRootSource"/>
+                
+        <wb-resource deploy-path="/WEB-INF/classes" source-path="/src"/>
+                
+        <property name="java-output-path" value="/7H_The_Town_Project/WebContent/WEB-INF/classes"/>
+        <property name="context-root" value="7H_The_Town"/>
+            
+    </wb-module>
+    
+</project-modules>

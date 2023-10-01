@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+
+	<entry key="selectList">
+      SELECT *
+      FROM (
+         SELECT ROWNUM RNUM, A.*
+         FROM(
+            SELECT PET_NO, PET_NAME, PET_KIND, PET_AGE, PET_GENDER, PET_PRICE, PET_RESCUE, STATUS
+            FROM PET
+            WHERE STATUS = 'Y'
+            ORDER BY PET_RESCUE DESC) A
+         )
+      WHERE RNUM BETWEEN ? AND ? 
+	</entry>
+	
+	<entry key="selectListCount">
+		SELECT COUNT(*)
+		FROM PET
+		WHERE STATUS='Y'
+	</entry>
+	
+	<entry key="selectAllPet">
+		SELECT 
+			PET_NO, 
+			PET_NAME,
+			PET_KIND,
+			PET_AGE,
+			PET_GENDER,
+			PET_PRICE,
+			PET_RESCUE,
+			STATUS
+		FROM PET 
+		WHERE STATUS = 'Y'
+		ORDER BY PET_NO DESC;
+	</entry>
+	
+	<entry key="selectPet">
+		SELECT *
+		  FROM PET
+		 WHERE PET_NO = ?
+		   AND STATUS = 'Y'
+	</entry>
+
+	<entry key="insertPet">
+		INSERT INTO PET(
+							PET_NO,
+							PET_NAME,
+							PET_KIND,
+							PET_AGE,
+							PET_GENDER,
+							PET_PRICE,
+							PET_RESCUE,
+							STATUS
+							)
+		VALUES (
+				'PE' || SEQ_PET_NO.NEXTVAL,
+				?,
+				?,
+				?,
+				?,
+				?,
+				SYSDATE,
+				'Y'
+				)
+	</entry>
+	
+	<entry key="updatePet">
+		 UPDATE PET
+			SET PET_NO = ? ,
+				PET_NAME = ? ,
+				PET_KIND = ? ,
+				PET_AGE = ? ,
+				PET_GENDER = ? ,
+				PET_PRICE = ? ,
+				PET_RESCUE = ? ,
+				STATUS = ? ,
+			    MODIFY_DATE = SYSDATE
+			WHERE PET_NO = ?
+	</entry>
+	
+	<entry key="deletePet">
+		UPDATE PET
+		   SET STATUS = 'N' 		 
+		 WHERE PET_NO = ? 
+	</entry>
+		
+	<entry key="selectPetList">
+		SELECT 
+			PET_NO, 
+			PET_NAME,
+			PET_KIND,
+			PET_AGE,
+			PET_GENDER,
+			PET_PRICE,
+			PET_RESCUE,
+			STATUS
+		FROM PET 
+		WHERE STATUS = 'Y'
+	</entry>
+	
+</properties>

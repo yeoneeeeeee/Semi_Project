@@ -1,0 +1,173 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+
+<properties>
+
+	<entry key="faqList">
+		SELECT *
+		FROM(
+			SELECT ROWNUM RNUM , A.*
+			FROM (
+				SELECT FAQ_NO, FAQ_TITLE, FAQ_CONTENT, f.CREATE_DATE, USER_NAME, f.STATUS
+				FROM FAQ f
+				JOIN MEMBER USING(USER_NO)
+				WHERE f.STATUS = 'Y') A
+				)
+		WHERE RNUM BETWEEN ? AND ?
+	</entry>
+
+	<entry key="deleteFaq">
+		UPDATE FAQ
+		SET STATUS = 'N'
+		WHERE FAQ_NO = ?
+	</entry>
+	
+	
+	
+	
+	<entry key="reportList">
+		SELECT *
+		FROM(
+			SELECT ROWNUM RNUM , A.*
+			FROM (
+				SELECT REPORT_NO, REPORT_CONTENT, r.CREATE_DATE, USER_NAME, r.STATUS
+				FROM REPORT r
+				JOIN BOARD USING(BOARD_NO)
+				JOIN MEMBER ON(WRITER_NO = USER_NO)
+				WHERE r.STATUS = 'Y') A)
+		WHERE RNUM BETWEEN ? AND ?
+	</entry>
+
+	<entry key="deleteReport">
+		UPDATE REPORT
+		SET STATUS = 'N'
+		WHERE REPORT_NO = ?
+	</entry>
+
+	<entry key="selectFaqListCount">
+      SELECT COUNT(*)
+      FROM FAQ
+      WHERE STATUS='Y' 
+   </entry>
+   
+
+	<entry key="selectKeywordFaq">
+		SELECT COUNT(*)
+		FROM FAQ
+		WHERE STATUS = 'Y'
+			AND (USER_NO LIKE ? OR FAQ_TITLE LIKE ? OR FAQ_CONTENT LIKE ? OR CREATE_DATE LIKE ?)
+	</entry>
+	
+	
+	
+	<entry key="selectMemberNo">
+		SELECT *
+		FROM(
+			SELECT ROWNUM RNUM , A.*
+			FROM (
+				SELECT FAQ_NO, FAQ_TITLE, FAQ_CONTENT, CREATE_DATE, USER_NAME, f.STATUS
+				FROM FAQ f
+				JOIN MEMBER m ON (m.USER_NO = f.USER_NO)
+				WHERE f.STATUS = 'Y'
+					AND (FAQ_NO LIKE ? OR FAQ_TITLE LIKE ? OR FAQ_CONTENT LIKE ? OR USER_NAME LIKE ?)
+				ORDER BY TO_NUMBER(SUBSTR(f.USER_NO,3))) A
+				)
+		WHERE RNUM BETWEEN ? AND ?
+			
+	</entry>
+	
+	<entry key="selectEnrollDate">
+		SELECT *
+		FROM(
+			SELECT ROWNUM RNUM , A.*
+			FROM (
+				SELECT FAQ_NO, FAQ_TITLE, FAQ_CONTENT, CREATE_DATE, USER_NAME, f.STATUS
+				FROM FAQ f
+				JOIN MEMBER m ON (m.USER_NO = f.USER_NO)
+				WHERE f.STATUS = 'Y'
+					AND (FAQ_NO LIKE ? OR FAQ_TITLE LIKE ? OR FAQ_CONTENT LIKE ? OR USER_NAME LIKE ?)
+				ORDER BY CREATE_DATE) A
+				)
+		WHERE RNUM BETWEEN ? AND ?
+			
+	</entry>
+	
+	<entry key="selectFaqTitle">
+		SELECT *
+		FROM(
+			SELECT ROWNUM RNUM , A.*
+			FROM (
+				SELECT FAQ_NO, FAQ_TITLE, FAQ_CONTENT, CREATE_DATE, USER_NAME, f.STATUS
+				FROM FAQ f
+				JOIN MEMBER m ON (m.USER_NO = f.USER_NO)
+				WHERE f.STATUS = 'Y'
+					AND (FAQ_NO LIKE ? OR FAQ_TITLE LIKE ? OR FAQ_CONTENT LIKE ? OR USER_NAME LIKE ?)
+				ORDER BY FAQ_TITLE) A
+				)
+		WHERE RNUM BETWEEN ? AND ?
+			
+	</entry>
+
+	
+	<entry key="selectReportListCount">
+      SELECT COUNT(*)
+      FROM REPORT
+      WHERE STATUS='Y' 
+   </entry>
+   
+   
+   <entry key="selectKeywordReport">
+		SELECT COUNT(*)
+		FROM REPORT
+		WHERE STATUS = 'Y'
+			AND (UREPORT_NO LIKE ? OR REPORT_CONTENT LIKE ? OR CREATE_DATE LIKE ? OR BOARD_NO LIKE ?)
+	</entry>
+	
+	<entry key="selectReportBoardNo">
+		SELECT *
+		FROM(
+			SELECT ROWNUM RNUM , A.*
+			FROM (
+				SELECT REPORT_NO, REPORT_CONTENT, CREATE_DATE, BOARD_NO, STATUS
+				FROM REPORT r
+				WHERE r.STATUS = 'Y'
+					AND (REPORT_NO LIKE ? OR REPORT_CONTENT LIKE ? OR CREATE_DATE LIKE ? OR BOARD_NO LIKE ?)
+				ORDER BY TO_NUMBER(SUBSTR(BOARD_NO,3))) A
+				)
+		WHERE RNUM BETWEEN ? AND ?
+			
+	</entry>
+	
+	<entry key="selectReportEnrollDate">
+		SELECT *
+		FROM(
+			SELECT ROWNUM RNUM , A.*
+			FROM (
+				SELECT REPORT_NO, REPORT_CONTENT, CREATE_DATE, BOARD_NO, STATUS
+				FROM REPORT r
+				WHERE r.STATUS = 'Y'
+					AND (REPORT_NO LIKE ? OR REPORT_CONTENT LIKE ? OR CREATE_DATE LIKE ? OR BOARD_NO LIKE ?)
+				ORDER BY CREATE_DATE) A
+				)
+		WHERE RNUM BETWEEN ? AND ?
+			
+	</entry>
+	
+	<entry key="selectReportNo">
+		SELECT *
+		FROM(
+			SELECT ROWNUM RNUM , A.*
+			FROM (
+				SELECT REPORT_NO, REPORT_CONTENT, CREATE_DATE, BOARD_NO, STATUS
+				FROM REPORT r
+				WHERE r.STATUS = 'Y'
+					AND (REPORT_NO LIKE ? OR REPORT_CONTENT LIKE ? OR CREATE_DATE LIKE ? OR BOARD_NO LIKE ?)
+				ORDER BY TO_NUMBER(SUBSTR(REPORT_NO,3))) A
+				)
+		WHERE RNUM BETWEEN ? AND ?
+			
+	</entry>
+	
+
+</properties>
+

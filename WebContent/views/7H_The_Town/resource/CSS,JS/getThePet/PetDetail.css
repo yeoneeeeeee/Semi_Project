@@ -1,0 +1,132 @@
+.petDetailOuter{
+    font-family: 'S-CoreDream-3Light';
+    padding-top: 130px;
+}
+.petDetailBox{
+    display: flex;
+}
+.petImage{
+    width: 400px;
+    height: 440px;
+    margin: 40px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border: 1px solid rgb(190, 190, 190);
+    background-color: white;
+}
+.petImage img{
+    cursor: pointer;
+}
+.petImageSlide{
+    display: flex;
+    border-top: 1px solid rgb(190, 190, 190);
+    width: 100%;
+}
+.petImageSlide *{
+    margin: 5px 9px 5px 9px;
+}
+.petImageSlide button{
+    border: none;
+    background:white;
+    cursor: pointer;
+}
+.petInfo{
+    background-color: white;
+    border: 1px solid rgb(190, 190, 190);
+    width: 400px;
+    height: 440px;
+    margin: 40px;
+}
+.petInfo>h3{
+    margin-top: 40px;
+    font-weight: bold;
+    margin-left: 20px;
+}
+.petInfo>p{
+    margin: 15px 0px 15px 25px;
+}
+.petInfo>table{
+    width: 350px;
+    margin: 25px;
+    border: 2px solid rgb(160, 160, 160);
+}
+.petInfo>table *{
+    text-align: center;
+}
+.petInfo tr{
+    border-radius: 5px;
+}
+.petInfo th{
+    background-color: rgb(190, 190, 190);
+    border: 1px solid rgb(160, 160, 160);
+    padding: 5px;
+    width: 130px;
+}
+.petInfo td{
+    width: 140px;
+    border: 1px solid rgb(160, 160, 160);
+    background-color: white;
+}
+.tripleButton{
+    margin-top: 0px;
+    display: flex;
+}
+.tripleButton *{
+    cursor: pointer;
+}
+.tripleButton>button{
+    width: 220px;
+    height: 40px;
+    border: none;
+    border-radius: 5px;
+    font-size: 15px;
+    font-weight: bolder;
+    color: white;
+    background: rgb(80, 80, 80);
+    margin: 5px 5px 5px 15px;
+    text-align: center;
+    line-height: 2.5;
+}
+.priceInfo{
+    display: flex;
+}
+.priceInfo img{
+    margin: 10px;
+}
+.priceInfo>p{
+    font-weight: bold;
+    font-size: 11px;
+}
+.petDetails{
+    margin: 40px;
+    width: 880px;
+    height: auto;
+    background: white;
+    border: 1px solid rgb(160, 160, 160);
+    text-align:center;
+}
+.petDetails *{
+    margin: 60px;
+    font-size: 15px;
+}
+.toPetList{
+    text-align: center;
+    margin: 70px;
+    margin-bottom: 120px;
+}
+.toPetList>a{
+    border: 1px solid rgb(160, 160, 160);
+    border-radius: 5px;
+    color: white;
+    font-family: 'S-CoreDream-3Light';
+    background: rgb(100, 100, 100);
+    padding: 15px 30px;
+}
+.deleteGetBtn{
+	margin-top : -100px;
+	margin-right:45px;
+}
+.updateGetBtn{
+	margin-top : -100px;
+}

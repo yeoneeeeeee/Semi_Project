@@ -1,0 +1,81 @@
+.petListBox{
+	margin: 200px 0px 170px 0px;
+	width:1250px;
+    height: 70%;
+    font-family: 'S-CoreDream-3Light';
+    background:white;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+}
+.petListBox>h2{
+    font-weight: bold;
+    text-align: center;
+    margin-top: 80px;
+    padding: 40px;
+    text-shadow: 1px 1px 1px gray;
+}
+.petListSearch{
+    display: flex;
+    flex-direction: column;
+    align-items: end;
+    margin-left: 790px;
+    background:white;
+}
+.petListSearch button{
+    background:white;
+}
+.petListSearch img{
+    margin-bottom: -5px;
+    cursor: pointer;
+    background:white;
+}
+.petBoxLine{
+    display: flex;
+}
+.petBoxOne{
+    background-color: white;
+    border: 2px solid rgb(210, 210, 210);
+    border-radius: 3px;
+    margin: 30px;
+    cursor: pointer;
+    padding:0px;
+}
+.petBoxOne p{
+    background-color: white;
+    font-weight: bold;
+    margin: 5px;
+}
+.topBorder{
+    border-top: 1px solid rgb(190, 190, 190);
+}
+.bottomBorder{
+	width:200px;
+	height:200px;
+    border-bottom: 1px solid rgb(190, 190, 190);
+}
+.bottomBorder img{
+	padding:0px;
+	margin:0px;
+}
+.middleBorder{
+    border-top: 1px solid rgb(190, 190, 190);
+    border-bottom: 1px solid rgb(190, 190, 190);
+}
+.textAlignCenter{
+    text-align: center;
+}
+.listBtn>.seeAll{
+	margin-left: 900px;
+}
+.insertGetBtn{
+	margin-left: 700px;
+	margin-bottom: -57px;
+}
+.petListPageSelect{
+    text-align: center;
+    margin: 30px 0px 80px 0px;
+}
+.petListPageSelect button{
+    cursor: pointer;
+}

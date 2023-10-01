@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+
+<properties>
+
+	<entry key="replyAd">
+		INSERT INTO POSTALL
+		VALUES ('PO' || SEQ_POST_NO.NEXTVAL, '문의에 대한 답변입니다.', ? , SYSDATE, ?, ?, 'Y')
+	</entry>
+
+</properties>

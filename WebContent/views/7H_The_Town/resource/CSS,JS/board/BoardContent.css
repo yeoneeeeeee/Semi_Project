@@ -1,0 +1,182 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+html{
+    /* font-size: 10px; */
+}
+.board_view_wrap{
+    width: 1300px;
+    height: 100%;
+    margin-top: 200px;
+    background-color: white;
+    padding-bottom: 50px;
+}
+.board_view_title{
+    width: 90%;
+    border-bottom:3px solid lightgray ;
+    padding-top: 20px;
+    padding-bottom:20px;
+    margin-left: 5%;
+    display:flex;
+}
+.board_view_title>p{
+    display: inline-block;
+    font-size: 1.4rem;
+    
+}
+pre{
+	font-family : 'S-CoreDream-3Light';
+}
+.board_view_title .content_ct_title{
+    width: 65%;
+}
+.board_view_title .content_ct_writer{
+    width: 15%;
+}
+.board_view_title .content_ct_date{
+    width: 15%;
+}
+.content_ct_title{
+    margin-left: 100px;
+}
+.report{
+	display:flex;
+	flex-direction:column;
+	align-items:end;
+	justify-content:center;
+	margin-top:4px;
+	margin-left:10px;
+	scale:1.2;
+}
+.board_view_picture{
+    display: flex;
+    flex-direction:column;
+    align-items: center;
+}
+.board_view_picture>img{
+    margin-top: 50px;
+}
+.board_view_contents{
+    margin-top: 50px;
+}
+.board_view_contents_p{
+    font-size: 1.2rem;
+}
+.datgle{
+    width: 1300px;
+    height: 100%;
+    margin-top: 20px;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    border: 1px none black;
+    background-color: white;
+}
+.board_list_gle{
+    margin-top: 10px;
+    margin-left: 5%;
+    width: 90%;
+    border-top: 2px solid lightgray;
+    padding: 5px 0 15px 0;
+}
+.board_list_gle>div{
+    display: inline-block;
+    margin-top: 10px;
+    margin-left: 5%;
+    font-size: 1.5rem;
+}
+.view_gle{
+    width: 50%;
+}
+.view_name{
+    width: 15%;
+}
+.view_date{
+    width:15%;
+}
+.datgle_input{
+    width: 1300px;
+    height: 100%;
+    padding-top: 10px;
+    margin-top: 20px;
+    padding-bottom: 10px;
+    border: 1px none black;
+    background-color: white;
+    display: flex;
+}
+.datgle_input #txt_inp{
+    margin-left: 2%;
+    width: 85%;
+    height: 80px;
+    border-radius: 5px;
+    border-style:none;
+    background-color: whitesmoke;
+}
+.datgle_input .datgle_put{
+    width: 100px;
+    border : none;
+    background-color:rgb(153,152,152);
+    color: white;
+    border-radius: 2px;
+    margin-left: 40px;
+    height: 80px;
+}
+.datgle_input .datgle_put:hover{
+	background-color:#26a69a;
+	color: #fff;
+	cursor : pointer;
+}
+.bt_wrap{
+    width: 1300px;
+    height: 50px;
+    margin-top: 30px;
+    margin-right: 30px;
+    text-align: right;
+    margin-bottom: 40px;
+}
+.bt_wrap a{
+    border: 1px none black;
+    background-color:rgb(153, 152, 152);
+    display: inline-block;
+    border-radius: 15px;
+    margin-right: 10px;
+    text-align: center;
+    width: 120px;
+    height: 35px;
+    color: white;
+    font-size: 1.5rem;
+    text-decoration: none;
+    line-height: 35px;
+    margin-bottom: -100px;
+}
+.bt_wrap a>.report{
+	margin-right:15px;
+}
+.bt_wrap a:hover{
+	background-color:#26a69a;
+	color: #fff;
+	cursor : pointer;
+}
+.bt_wrap button{
+    border: 1px none black;
+    background-color: rgb(153, 152, 152);
+    
+    border-radius: 15px;
+    margin-right: 0px;
+    text-align: center;
+    width: 120px;
+    height: 35px;
+    color: white;
+    font-size: 1.5rem;
+    text-decoration: none;
+    line-height: 35px;
+    margin-bottom: 30px;
+}
+.bt_wrap>div{
+    display: flex;
+    text-align: left;
+    margin-left:15px;
+}
+.board_view_contents_p{
+    margin: 50px;
+}

@@ -1,0 +1,41 @@
+.termsForm {
+    width: 880px; 
+    margin: 200px 40px ;
+    padding: 40px;
+    background-color: white;
+}
+.termsForm h4 {
+    text-align: center;
+    font-weight: bold;
+    margin: 80px;
+}
+.termsForm .termsInfo {
+    height: 250px;
+    font-weight: bold;
+    border: 1px solid black; 
+    background-color: rgb(250, 250, 250);
+    white-space: pre-line; 
+    overflow-y: scroll; 
+    margin: 40px;
+}
+.termsInfo>p{
+    margin: 30px;
+}
+.termsCheckBox{
+    margin: 40px;
+    text-align: right;
+}
+.termsSubmit{
+    text-align: center;
+}
+.termsSubmit button[type="submit"]{
+    cursor: pointer;
+    font-family: 'S-CoreDream-3Light';
+    width: 120px; 
+    height: 50px;
+    margin-top: 10px;
+    margin-bottom: 90px;
+    border: 1px solid rgba(190, 190, 190, 0.5);
+    border-radius: 5px;
+    background: rgb(190, 190, 190);
+}

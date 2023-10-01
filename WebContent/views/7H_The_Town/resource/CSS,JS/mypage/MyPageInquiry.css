@@ -1,0 +1,237 @@
+body {
+    margin: 0;
+    box-sizing: border-box;
+}
+
+.outer {
+    width: 100vw;
+    height: 2000px;
+    background-color: rgb(240, 240, 240);
+
+}
+/* ============================================ */
+/*                  컨텐츠                        */
+/* ============================================ */
+
+.container {
+    width: 80vw;
+    max-width:1300px;
+    min-width:1150px;
+    height:100%;
+    margin: auto;
+    padding-top: 190px;
+    display: flex;
+    position:relative;
+}
+
+.box {
+    border: 1px solid rgba(180, 180, 180, 0.5);
+    box-shadow: 0 10px 10px 0 rgba(128, 128, 128, 0.523);
+}
+
+/* ============================================ */
+/*                  사이드바                        */
+/* ============================================ */
+
+.sidebar {
+    width: 200px;
+    height: 730px;
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    left:10%;
+}
+
+#sidebar {
+    position: absolute;
+}
+
+.side-navi a {
+    text-decoration: none;
+    color: black;
+}
+
+.user-name {
+    width: 80%;
+    padding: 50px 0 0;
+    line-height: 35px;
+    font-weight: bold;
+}
+
+.user-name>.user-txt1 {
+    font-size: 20px;
+    color: gray;
+}
+
+.user-name>.user-txt2 {
+    font-size: 25px;
+}
+
+.side-navi {
+    width: 80%;
+    padding-top: 20px;
+    text-align: center;
+    line-height: 35px;
+    font-size: 15px;
+    font-weight: 400;
+    margin: 0;
+}
+
+.side-navi dt {
+    padding: 10px 0;
+    border-bottom: 1.5px solid lightgray;
+}
+
+.side-navi dt:first-child {
+    border-top: 1.5px solid lightgray;
+}
+
+.side-navi dt:hover {
+    color: black;
+    font-weight: bold;
+    background: linear-gradient(to right, #ffffff, #ffffff 50%, #f4f4f4ef 50%);
+    background-size: 200% 100%;
+    animation: gradient-animation 0.2s ease-out forwards;
+}
+
+@keyframes gradient-animation {
+    0% {
+        background-position: 0 0;
+    }
+    100% {
+        background-position: 100% 0;
+    }
+}
+
+/* ============================================ */
+/*                  사용자 컨텐츠1                       */
+/* ============================================ */
+
+.mypage-content {
+    width: 40VW;
+    height: 100%;
+    /* margin-right: 115px; */
+    position:absolute;
+    right:10%;
+}
+
+.mypage-title {
+    font-size: 30px;
+    height: 70px;
+    font-weight: bold;
+}
+
+.user-info {
+    height: 200px;
+}
+
+.user-info1 {
+    background-color: white;
+    display: flex;
+}
+
+.info1-wrap {
+    display: flex;
+    width: 100%;
+    margin: 40px 50px;
+    justify-content: space-between;
+}
+
+.info1-txt {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    margin: auto 30px;
+    flex-direction: column;
+}
+
+.info1-txt1 {
+    font-size: 18px;
+    font-weight: bold;
+    margin: auto 0 10px;
+}
+
+.info1-txt2 {
+    margin: 5px 0 auto;
+    line-height: 30px;
+    font-size: 14px;
+    color: gray;
+}
+
+/* ============================================ */
+/*                  시용자 컨텐츠2                        */
+/* ============================================ */
+
+.user-info2 {
+    margin-top: 60px;
+    background-color: rgb(255, 255, 255);
+    display: flex;
+    flex-direction: column;
+    align-self: center;
+}
+
+.info2-wrap {
+    width: 90%;
+    margin: auto;
+    margin-top:60px;
+    padding-bottom: 100px;
+}
+
+.info2-title {
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.info2-table {
+    margin-top: 50px;
+}
+.info2-table>table {
+    width: 100%;
+}
+
+.info2-table thead>tr {
+    text-align: center;
+    border-bottom: 1px solid gray;
+}
+
+.info2-table span {
+    margin-top: 15px;
+}
+
+.info2-table td {
+    font-size: 14px;
+    margin-left: 20px;
+    color: gray;
+    line-height: 40px;
+    text-align: center;
+}
+
+.info2-table td {
+    border-bottom: 1px solid #444444;
+    padding: 10px;
+}
+
+.account-btn {
+    width: 160px;
+    height: 50px;
+    background-color: rgb(239, 239, 239);
+    border: 1px solid rgb(156, 156, 156);
+    border-radius: 10px;
+    font-size: 14px;
+    cursor: pointer;
+}
+
+.btn-wrap {
+	text-align:end;
+	margin-right:45px;
+	margin-bottom:50px;
+}
+
+.mypage-content .btn {
+    background-color: rgb(153, 152, 152);
+}
+
+/* ============================================ */
+/*                  푸터바                        */
+/* ============================================ */

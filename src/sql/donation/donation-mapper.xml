@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+
+	<entry key="selectDonation">
+		SELECT DONATION_NO, DONA_PRICE, DONA_KIND, DONA_DATE,
+		USER_ID
+		FROM DONATION
+		JOIN MEMBER USING (USER_NO)
+		WHERE USER_ID = ?
+	</entry>
+	
+	<entry key="nSelectDonation">
+		SELECT *
+		FROM DONATION
+		WHERE USER_NO = ?
+	</entry>
+
+	<entry key="memberDonation">
+		SELECT COUNT(*) "TOTAL", SUM(DONA_PRICE) "SUM"
+		FROM
+		DONATION
+		JOIN MEMBER USING (USER_NO)
+		WHERE USER_ID = ?
+	</entry>
+
+  <entry key="DonationGrade">
+        SELECT *
+        FROM MEMBERGRADE
+          WHERE (SELECT SUM(DONA_PRICE)
+                FROM DONATION
+                WHERE USER_NO = ?
+                GROUP BY USER_NO) > MIN_DONA
+          AND MAX_DONA > (SELECT SUM(DONA_PRICE)
+                FROM DONATION
+                WHERE USER_NO = ?
+                GROUP BY USER_NO)     
+  </entry>
+  
+
+	<entry key="insertDonation">
+		INSERT INTO DONATION(
+		DONATION_NO,
+		DONA_PRICE,
+		DONA_KIND,
+		DONA_DATE,
+		USER_NO
+		)
+		VALUES(
+		'DO' || SEQ_DONATION_NO.NEXTVAL,
+		?,
+		?,
+		SYSDATE,
+		?
+		)
+	</entry>
+
+	<!-- <entry key="insertDonation2"> INSERT INTO DONATION( DONATION_NO, DONA_PRICE, 
+		DONA_KIND, DONA_DATE, user ) VALUES( DO || SEQ_DONATION_NO.NEXTVAL, ?, ? 
+		) </entry> -->
+
+
+
+	<entry key="donaP">
+		SELECT *
+		from DONATION
+	</entry>
+	
+	<entry key="donaA">
+		SELECT *
+		from DONATION
+	</entry>
+
+
+
+
+
+
+</properties>
+
+

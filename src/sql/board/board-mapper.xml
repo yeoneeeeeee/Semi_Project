@@ -1,0 +1,499 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+
+<properties>
+
+	<entry key="selectBoard">
+		SELECT 
+			BOARD_NO, BOARD_TITLE, BOARD_CATEGORY, BOARD_CONTENT, CREATE_DATE, COUNT, WRITER_NO, b.STATUS
+		FROM BOARD b
+		JOIN MEMBER ON (WRITER_NO = USER_NO)
+		WHERE USER_ID = ?
+	</entry>
+
+	<entry key="memberBoard">
+		SELECT COUNT(*) "TOTAL"
+		FROM BOARD b 
+		JOIN MEMBER ON (WRITER_NO = USER_NO)
+		WHERE USER_ID = ? AND b.STATUS = 'Y'
+	</entry>
+	
+	<entry key="selectCountReport">
+		SELECT COUNT(*)
+		FROM REPORT R
+        WHERE R.STATUS = 'Y'
+	</entry>
+	<entry key = "selectListReport">
+		SELECT *
+		FROM (SELECT ROWNUM RNUM, A.*
+      	FROM (SELECT *
+            FROM REPORT B
+            WHERE B.STATUS='Y') A)
+		WHERE RNUM BETWEEN ? AND ?
+	</entry>
+	<entry key="selectCountBoard">
+		SELECT COUNT(*)
+		FROM BOARD
+		JOIN MEMBER ON(USER_NO = WRITER_NO)
+        WHERE USER_ID = ? AND BOARD.STATUS = 'Y'
+	</entry>
+	<entry key="selectListCount">
+		SELECT COUNT(*)
+		FROM BOARD
+		WHERE STATUS='Y'	
+	</entry>
+	<entry key="selectListCountBoard">
+		SELECT COUNT(*)
+		FROM BOARD
+		WHERE STATUS='Y' AND BOARD_CATEGORY = '일반게시판'	
+	</entry>
+	<entry key="selectListCountShare">
+		SELECT COUNT(*)
+		FROM BOARD
+		WHERE STATUS='Y' AND BOARD_CATEGORY = '나눔게시판'	
+	</entry>
+	<entry key="selectListCountNone">
+		SELECT COUNT(*)
+		FROM BOARD
+		WHERE STATUS='Y' AND BOARD_CATEGORY = '공지사항'	
+	</entry>
+	<entry key="selectListCountAdopt">
+		SELECT COUNT(*)
+		FROM BOARD
+		WHERE STATUS='Y' AND BOARD_CATEGORY = '입양후기'	
+	</entry>
+	<entry key="selectListCountFaqPet">
+		SELECT COUNT(*)
+		FROM FAQ
+		WHERE STATUS='Y' AND FAQ_CATEGORY = '입양문의'	
+	</entry>
+	<entry key="selectListCountFaqDona">
+		SELECT COUNT(*)
+		FROM FAQ
+		WHERE STATUS='Y' AND FAQ_CATEGORY = '후원문의'	
+	</entry>
+	<entry key="selectListCountFaqEtc">
+		SELECT COUNT(*)
+		FROM FAQ
+		WHERE STATUS='Y' AND FAQ_CATEGORY = '기타문의'	
+	</entry>
+	<entry key="selectListCountTitle">
+		SELECT COUNT(*)
+		FROM BOARD
+		WHERE STATUS='Y' AND BOARD_TITLE LIKE ?	
+	</entry>
+	<entry key="selectListCountNum">
+		SELECT COUNT(*)
+		FROM BOARD
+		WHERE STATUS='Y' AND BOARD_NO LIKE ?
+	</entry>
+	<entry key="selectListCountWriter">
+		SELECT COUNT(*)
+		FROM BOARD B
+		JOIN MEMBER M ON (USER_NO = WRITER_NO)
+		WHERE B.STATUS = 'Y' AND USER_NAME LIKE ?	
+	</entry>
+	<entry key="selectListFaqCountTitle">
+		SELECT COUNT(*)
+		FROM FAQ
+		WHERE STATUS='Y' AND FAQ_TITLE LIKE ?	
+	</entry>
+	<entry key="selectListFaqCountNum">
+		SELECT COUNT(*)
+		FROM FAQ
+		WHERE STATUS='Y' AND FAQ_NO LIKE ?
+	</entry>
+	<entry key="selectListFaqCountWriter">
+		SELECT COUNT(*)
+		FROM FAQ B
+		JOIN MEMBER M USING(USER_NO)
+		WHERE B.STATUS = 'Y' AND USER_NAME LIKE ?	
+	</entry>
+	<entry key="increaseCount">
+		UPDATE BOARD
+		SET COUNT = COUNT+1
+		WHERE BOARD_NO = ? AND STATUS = 'Y'
+	</entry>
+	
+	<entry key="increaseCountFaq">
+		UPDATE FAQ
+		SET COUNT = COUNT+1
+		WHERE FAQ_NO = ? AND STATUS = 'Y'
+	</entry>
+	<entry key ="selectListShare">
+		SELECT BOARD_NO, BOARD_TITLE, CREATE_DATE, COUNT, USER_NAME,BOARD_CATEGORY,RNUM
+		FROM(
+		SELECT ROWNUM RNUM, A.*
+		FROM(SELECT *
+		FROM BOARD B
+		WHERE B.STATUS='Y' AND B.BOARD_CATEGORY = '나눔게시판'
+		ORDER BY CREATE_DATE DESC) A
+		)
+		JOIN MEMBER ON(USER_NO = WRITER_NO)
+		WHERE RNUM BETWEEN ? AND ?
+		
+	</entry>
+	<entry key ="selectListBoard">
+		SELECT BOARD_NO, BOARD_TITLE, CREATE_DATE, COUNT, USER_NAME,BOARD_CATEGORY,RNUM
+		FROM(
+		SELECT ROWNUM RNUM, A.*
+		FROM(SELECT *
+		FROM BOARD B
+		WHERE B.STATUS='Y' AND B.BOARD_CATEGORY = '일반게시판'
+		ORDER BY CREATE_DATE DESC) A
+		)
+		JOIN MEMBER ON(USER_NO = WRITER_NO)
+		WHERE RNUM BETWEEN ? AND ? 
+	</entry>
+	<entry key ="selectListNone">
+		SELECT BOARD_NO, BOARD_TITLE, CREATE_DATE, COUNT, USER_NAME,BOARD_CATEGORY,RNUM
+		FROM(
+		SELECT ROWNUM RNUM, A.*
+		FROM(SELECT *
+		FROM BOARD B
+		WHERE B.STATUS='Y' AND B.BOARD_CATEGORY = '공지사항'
+		ORDER BY CREATE_DATE DESC) A
+		)
+		JOIN MEMBER ON(USER_NO = WRITER_NO)
+		WHERE RNUM BETWEEN ? AND ?
+		
+	</entry>
+	<entry key ="selectListAdopt">
+		SELECT BOARD_NO, BOARD_TITLE, CREATE_DATE, COUNT, USER_NAME,BOARD_CATEGORY,RNUM,USER_NAME
+		FROM(
+		SELECT ROWNUM RNUM, A.*
+		FROM(SELECT *
+		FROM BOARD B
+		WHERE B.STATUS='Y' AND B.BOARD_CATEGORY = '입양후기'
+		ORDER BY CREATE_DATE DESC) A
+		)
+		JOIN MEMBER ON(USER_NO = WRITER_NO)
+		WHERE RNUM BETWEEN ? AND ?
+		
+	</entry>
+	<entry key ="selectListFaqPet">
+		SELECT FAQ_NO, FAQ_TITLE, CREATE_DATE, USER_NAME,FAQ_CATEGORY,COUNT,RNUM,USER_NAME
+		FROM(
+		SELECT ROWNUM RNUM, A.*
+		FROM(SELECT *
+		FROM FAQ B
+		WHERE B.STATUS='Y' AND B.FAQ_CATEGORY = '입양문의'
+		ORDER BY CREATE_DATE DESC) A
+		)
+		JOIN MEMBER USING(USER_NO)
+		WHERE RNUM BETWEEN ? AND ? 
+	</entry>
+	<entry key ="selectListFaqDona">
+		SELECT FAQ_NO, FAQ_TITLE, CREATE_DATE, USER_NAME,FAQ_CATEGORY,COUNT,RNUM,USER_NAME
+		FROM(
+		SELECT ROWNUM RNUM, A.*
+		FROM(SELECT *
+		FROM FAQ B
+		WHERE B.STATUS='Y' AND B.FAQ_CATEGORY = '후원문의'
+		ORDER BY CREATE_DATE DESC) A
+		)
+		JOIN MEMBER USING(USER_NO)
+		WHERE RNUM BETWEEN ? AND ? 
+	</entry>
+	<entry key ="selectListFaqEtc">
+		SELECT FAQ_NO, FAQ_TITLE, CREATE_DATE, USER_NAME,FAQ_CATEGORY,COUNT,RNUM
+		FROM(
+		SELECT ROWNUM RNUM, A.*
+		FROM(SELECT *
+		FROM FAQ B
+		WHERE B.STATUS='Y' AND B.FAQ_CATEGORY = '기타문의'
+		ORDER BY CREATE_DATE DESC) A
+		)
+		JOIN MEMBER USING(USER_NO)
+		WHERE RNUM BETWEEN ? AND ? 
+	</entry>
+
+	<entry key ="selectTitle">
+		SELECT BOARD_NO, BOARD_TITLE, CREATE_DATE, COUNT, USER_NAME,BOARD_CATEGORY,RNUM
+		FROM(
+		SELECT ROWNUM RNUM, A.*
+		FROM(SELECT *
+		FROM BOARD B
+		WHERE B.STATUS='Y' AND BOARD_TITLE LIKE ?
+		ORDER BY CREATE_DATE DESC) A
+		)
+		JOIN MEMBER ON(USER_NO = WRITER_NO)
+		WHERE RNUM BETWEEN ? AND ? 
+	</entry>
+	
+	<entry key ="selectNum">
+		SELECT BOARD_NO, BOARD_TITLE, CREATE_DATE, COUNT, USER_NAME,BOARD_CATEGORY,RNUM
+		FROM(
+		SELECT ROWNUM RNUM, A.*
+		FROM(SELECT *
+		FROM BOARD B
+		WHERE B.STATUS='Y' AND B.BOARD_NO LIKE ?
+		ORDER BY CREATE_DATE DESC) A
+		)
+		JOIN MEMBER ON(USER_NO = WRITER_NO)
+		WHERE RNUM BETWEEN ? AND ? 
+	</entry>
+	
+	<entry key ="selectWriter">
+		SELECT BOARD_NO, BOARD_TITLE, CREATE_DATE, COUNT, USER_NAME,BOARD_CATEGORY,RNUM
+		FROM(
+		SELECT ROWNUM RNUM, A.*
+		FROM(SELECT *
+		FROM BOARD B
+        JOIN MEMBER ON(USER_NO = WRITER_NO)
+		WHERE B.STATUS='Y' AND USER_NAME LIKE ?
+		ORDER BY CREATE_DATE DESC) A
+		)
+		WHERE RNUM BETWEEN ? AND ? 
+	</entry>
+	
+	<entry key ="selectFaqTitle">
+		SELECT FAQ_NO, FAQ_TITLE, CREATE_DATE, USER_NAME,FAQ_CATEGORY,COUNT,RNUM
+		FROM(
+		SELECT ROWNUM RNUM, A.*
+		FROM(SELECT *
+		FROM FAQ B
+		WHERE B.STATUS='Y' AND FAQ_TITLE LIKE ?
+		ORDER BY CREATE_DATE DESC) A
+		)
+		JOIN MEMBER USING(USER_NO)
+		WHERE RNUM BETWEEN ? AND ? 
+	</entry>
+	
+	<entry key ="selectFaqNum">
+		SELECT FAQ_NO, FAQ_TITLE, CREATE_DATE, USER_NAME,FAQ_CATEGORY,COUNT,RNUM
+		FROM(
+		SELECT ROWNUM RNUM, A.*
+		FROM(SELECT *
+		FROM FAQ B
+		WHERE B.STATUS='Y' AND B.FAQ_NO LIKE ?
+		ORDER BY CREATE_DATE DESC) A
+		)
+		JOIN MEMBER USING(USER_NO)
+		WHERE RNUM BETWEEN ? AND ? 
+	</entry>
+	
+	<entry key ="selectFaqWriter">
+		SELECT FAQ_NO, FAQ_TITLE, CREATE_DATE, USER_NAME,FAQ_CATEGORY,COUNT,RNUM
+		FROM(
+		SELECT ROWNUM RNUM, A.*
+		FROM(SELECT *
+		FROM FAQ B
+		WHERE B.STATUS='Y'
+		ORDER BY CREATE_DATE DESC) A
+		)
+		JOIN MEMBER USING(USER_NO)
+		WHERE RNUM BETWEEN ? AND ? AND USER_NAME LIKE ?
+	</entry>
+	<entry key="insertBoard">
+		INSERT INTO BOARD(
+			BOARD_NO,
+			BOARD_TITLE,
+			BOARD_CATEGORY,
+			WRITER_NO,
+			BOARD_CONTENT,
+			CREATE_DATE,
+			COUNT,
+			STATUS
+		)VALUES('BO' || SEQ_BOARD_NO.NEXTVAL,?,?,?,?,SYSDATE,0,'Y')
+	</entry>
+	<entry key="insertFaq">
+		INSERT INTO FAQ(
+			FAQ_NO,
+			FAQ_TITLE,
+			FAQ_CATEGORY,
+			USER_NO,
+			FAQ_CONTENT,
+			CREATE_DATE,
+			COUNT,
+			STATUS
+		)VALUES('FA' || SEQ_FAQ_NO.NEXTVAL,?,?,?,?,SYSDATE,0,'Y')
+	</entry>
+	<entry key="insertReport">
+		INSERT INTO REPORT(
+			REPORT_NO,
+			REPORT_CONTENT,
+			CREATE_DATE,
+			BOARD_NO,
+			STATUS
+		)VALUES('RO' || SEQ_REPORT_NO.NEXTVAL,?,SYSDATE,?,'Y')
+	</entry>
+	<entry key ="selectBoard2">
+		SELECT BOARD_NO,B.BOARD_TITLE, B.BOARD_CONTENT, B.CREATE_DATE,M.USER_NAME,COUNT,WRITER_NO,BOARD_CATEGORY
+		FROM BOARD B
+		JOIN MEMBER M ON(USER_NO = WRITER_NO)
+		WHERE B.BOARD_NO = ? AND B.STATUS = 'Y'
+	</entry>
+	<entry key ="selectFaq">
+		SELECT FAQ_NO,B.FAQ_TITLE, B.FAQ_CONTENT, B.CREATE_DATE,M.USER_NAME,COUNT,USER_NO,B.FAQ_CATEGORY
+		FROM FAQ B
+		JOIN MEMBER M USING(USER_NO)
+		WHERE B.FAQ_NO = ? AND B.STATUS = 'Y'
+	</entry>
+	
+	<entry key = "deleteBoard">
+		UPDATE BOARD
+		SET STATUS = ?
+		WHERE BOARD_NO = ?
+	</entry>
+	<entry key = "deleteFaq">
+		UPDATE FAQ
+		SET STATUS = ?
+		WHERE FAQ_NO = ?
+	</entry>
+	<entry key ="updateBoard">
+		UPDATE BOARD
+		SET 
+		BOARD_CATEGORY = ?,
+		BOARD_TITLE = ?,
+		BOARD_CONTENT =?
+		WHERE BOARD_NO = ?
+	</entry>
+	<entry key ="updateFaq">
+		UPDATE FAQ
+		SET 
+		FAQ_CATEGORY = ?,
+		FAQ_TITLE = ?,
+		FAQ_CONTENT =?
+		WHERE FAQ_NO = ?
+	</entry>
+	
+	<entry key = "insertReply">
+		INSERT INTO REPLY(REPLY_NO,REPLY_CONTENT,CREATE_DATE,BOARD_NO,STATUS,REPLY_WRITER)
+		VALUES('REPLY' || SEQ_REPLY_NO.NEXTVAL,?,SYSDATE,?,'Y',?)
+	</entry>
+	<entry key = "selectReplyList">
+		SELECT REPLY_CONTENT, USER_NAME, CREATE_DATE
+		FROM REPLY R
+		JOIN MEMBER ON (REPLY_WRITER = USER_NO)
+		WHERE R.STATUS = 'Y' AND BOARD_NO = ?
+		ORDER BY CREATE_DATE DESC
+	</entry>
+	
+	<entry key = "selectAttachmentBoard">
+		SELECT
+			FILE_NO,
+			ORIGIN_NAME,
+			CHANGE_NAME,
+			FILE_PATH
+		FROM ATTACHMENT
+		WHERE BOARD_NO = ?
+		ORDER BY FILE_NO
+	</entry>
+	
+	<entry key = "insertAttachmentBoardList">
+		INSERT INTO ATTACHMENT(
+			FILE_NO,
+			BOARD_NO,
+			ORIGIN_NAME,
+			CHANGE_NAME,
+			FILE_PATH,
+			CATEGORY_NO,
+			STATUS
+		)
+		VALUES('AT' || SEQ_FILE_NO.NEXTVAL, 'BO' || SEQ_BOARD_NO.CURRVAL,?,?,?,?,'Y')
+	</entry>
+	
+	<entry key = "updateAttachmentBoardList">
+		<!-- UPDATE ATTACHMENT
+		SET 
+			BOARD_NO = ?,
+			ORIGIN_NAME = ?,
+			CHANGE_NAME = ?,
+			FILE_PATH = ?,
+			CATEGORY_NO = ?
+		WHERE FILE_NO = ? -->
+		
+		INSERT INTO ATTACHMENT(
+			FILE_NO,
+			BOARD_NO,
+			ORIGIN_NAME,
+			CHANGE_NAME,
+			FILE_PATH,
+			CATEGORY_NO,
+			STATUS
+		)
+		VALUES('AT' || SEQ_FILE_NO.NEXTVAL,?,?,?,?,?,'Y')
+	</entry>
+	
+	<entry key = "deleteAttachment">
+		DELETE FROM ATTACHMENT
+		WHERE BOARD_NO = ?
+	</entry>
+	
+	<entry key = "selectBoardMember">
+		SELECT BOARD_NO, BOARD_TITLE, CREATE_DATE, COUNT, USER_NAME,BOARD_CATEGORY,RNUM,USER_ID
+		FROM(
+		SELECT ROWNUM RNUM, A.*
+		FROM(SELECT *
+		FROM BOARD B
+		WHERE B.STATUS='Y'
+		ORDER BY CREATE_DATE DESC) A
+		)
+		JOIN MEMBER ON(USER_NO = WRITER_NO)
+		WHERE USER_ID = ?
+	</entry>
+	
+	<entry key="selectCountUser">
+		SELECT COUNT(*)
+		FROM BOARD
+		JOIN MEMBER ON(USER_NO = WRITER_NO)
+        WHERE USER_ID = ? AND B.STATUS = 'Y'
+	</entry>
+	<entry key = "selectBoardUser">
+		SELECT BOARD_NO, BOARD_TITLE, CREATE_DATE, COUNT, USER_NAME,BOARD_CATEGORY,USER_ID,RNUM
+		FROM(
+		SELECT ROWNUM RNUM, A.*
+		FROM(SELECT *
+		FROM BOARD B
+		WHERE B.STATUS='Y'
+		ORDER BY CREATE_DATE DESC) A
+		)
+		JOIN MEMBER ON(USER_NO = WRITER_NO)
+		WHERE RNUM BETWEEN ? AND ? AND USER_ID = ?
+	</entry>
+	
+	<entry key="selectCountFaqUser">
+		SELECT COUNT(*)
+		FROM FAQ
+		JOIN MEMBER USING(USER_NO)
+        WHERE USER_ID = ? AND FAQ.STATUS = 'Y'
+	</entry>
+	
+	<entry key ="selectBoardFaqMember">
+		SELECT FAQ_NO, FAQ_TITLE, CREATE_DATE, USER_NAME,FAQ_CATEGORY,COUNT,RNUM,USER_NAME
+		FROM(
+		SELECT ROWNUM RNUM, A.*
+		FROM(SELECT *
+		FROM FAQ B
+		WHERE B.STATUS='Y'
+		ORDER BY CREATE_DATE DESC) A
+		)
+		JOIN MEMBER USING(USER_NO)
+		WHERE  USER_ID = ?
+	</entry>
+	<entry key ="selectBoardFaqMemberM">
+		SELECT FAQ_NO, FAQ_TITLE, CREATE_DATE, USER_NAME,FAQ_CATEGORY,COUNT,USER_NAME,RNUM
+		FROM(
+		SELECT ROWNUM RNUM, A.*
+		FROM(SELECT *
+		FROM FAQ B
+		WHERE B.STATUS='Y'
+		ORDER BY CREATE_DATE DESC) A
+		)
+		JOIN MEMBER USING(USER_NO)
+		WHERE RNUM  BETWEEN ? AND ? AND USER_ID = ?
+	</entry>
+	<entry key = "deleteMyBoard">
+		UPDATE BOARD
+		SET STATUS = 'N'
+		WHERE BOARD_NO = ?
+	</entry>
+	
+	<entry key = "deleteMyFaqBoard">
+		UPDATE FAQ
+		SET STATUS = 'N'
+		WHERE FAQ_NO = ?
+	</entry>
+
+</properties>
